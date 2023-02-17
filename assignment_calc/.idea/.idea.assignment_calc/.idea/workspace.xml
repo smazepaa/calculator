@@ -4,9 +4,7 @@
     <projectFile>assignment_calc.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0bc712e-7792-4ee3-94e5-f3aeac52813e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.assignment_calc/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.assignment_calc/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f0bc712e-7792-4ee3-94e5-f3aeac52813e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,9 +36,9 @@
 }</component>
   <component name="RunManager">
     <configuration name="assignment_calc" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/bin/Debug/net7.0/assignment_calc.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bin/Debug/net7.0" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
@@ -50,7 +48,7 @@
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
       <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
+      <option name="PROJECT_TFM" value="net7.0" />
       <method v="2">
         <option name="Build" />
       </method>

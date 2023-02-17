@@ -1,5 +1,23 @@
-﻿var variable = "2 + 2 * 2";
+﻿using assignment_calc;
+using Stack = assignment_calc.Stack;
+
+Console.Write("> ");
+var variable = Console.ReadLine();
 char[] operators = new char[] { '+', '-', '/', '*' };
+
+Dictionary<string, int> dict = new Dictionary<string, int>();
+dict.Add("+", 2);
+dict.Add("-", 2);
+dict.Add("*", 3);
+dict.Add("/", 3);
+dict.Add("^", 4);
+
+Dictionary<string, string> assos = new Dictionary<string, string>();
+assos.Add("+", "left");
+assos.Add("-", "left");
+assos.Add("*", "left");
+assos.Add("/", "left");
+assos.Add("^", "right");
 
 List<string> operations = new List<string>(); // list of strings (operators)
 
@@ -14,23 +32,18 @@ foreach (var ch in variable)
     }
     else if (operators.Contains(ch)) // checking if it's an operator
     {
-        operations.Add(buff); // adding this operator to the buffer
+        if (buff != "") operations.Add(buff); // adding this operator to the buffer
         buff = ""; // cleaning the buff
+        oper = ch;
         if (oper is not null) // checking if oper is not empty
         {
             operations.Add(oper.ToString()); //if not - addind a string of that operator
         }
-        oper = ch; 
     }
 }
 
 if (buff != "") // if buff contains something
 {
     operations.Add(buff); // add it to the operations
-    operations.Add(oper.ToString());
 }
 
-foreach (var operation in operations)
-{
-    Console.WriteLine(operation);
-}
