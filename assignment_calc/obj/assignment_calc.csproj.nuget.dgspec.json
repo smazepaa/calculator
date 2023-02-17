@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sofma\\calculator\\assignment_calc\\assignment_calc.csproj": {}
+    "/Users/platonovskaaa/RiderProjects/project1/assignment_calc/assignment_calc.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sofma\\calculator\\assignment_calc\\assignment_calc.csproj": {
+    "/Users/platonovskaaa/RiderProjects/project1/assignment_calc/assignment_calc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sofma\\calculator\\assignment_calc\\assignment_calc.csproj",
+        "projectUniqueName": "/Users/platonovskaaa/RiderProjects/project1/assignment_calc/assignment_calc.csproj",
         "projectName": "assignment_calc",
-        "projectPath": "C:\\Users\\sofma\\calculator\\assignment_calc\\assignment_calc.csproj",
-        "packagesPath": "C:\\Users\\sofma\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sofma\\calculator\\assignment_calc\\obj\\",
+        "projectPath": "/Users/platonovskaaa/RiderProjects/project1/assignment_calc/assignment_calc.csproj",
+        "packagesPath": "/Users/platonovskaaa/.nuget/packages/",
+        "outputPath": "/Users/platonovskaaa/RiderProjects/project1/assignment_calc/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\sofma\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/platonovskaaa/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -53,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.102/RuntimeIdentifierGraph.json"
         }
       }
     }
