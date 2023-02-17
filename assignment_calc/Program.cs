@@ -47,3 +47,61 @@ if (buff != "") // if buff contains something
     operations.Add(buff); // add it to the operations
 }
 
+// shunting yard algorithm
+
+var stack = new Stack();
+var results = new Queue();
+foreach (var operation in operations)
+{
+    if (int.TryParse(operation, out var n))
+    {
+        results.Enqueue(operation);
+    }
+    else if (operation == "(")
+    {
+        stack.Push(operation);
+    }
+    else if (operation == ")")
+    {
+        while (stack.Peek() != "(")
+        {
+            results.Enqueue(stack.Pop());
+        }
+        stack.Pop();
+    }
+    else
+    {
+        while (
+            stack.Count() != 0 &&
+            (
+                stack.Peek() != "(" &&
+                (
+                    dict[stack.Peek()] > dict[operation] ||
+                    (
+                        dict[stack.Peek()] == dict[operation] &&
+                        assos[operation] == "left"
+                    )
+                )
+            )
+        )
+        {
+            results.Enqueue(stack.Peek());
+            stack.Pop();
+        }
+        stack.Push(operation);
+    }
+}
+
+
+foreach (var token in stack.GetElements())
+{
+    if (token != null) results.Enqueue(token);
+}
+
+foreach (var operation in results.GetElements())
+{
+    if (operation != null)
+    {
+        Console.WriteLine(operation);
+    }
+}
