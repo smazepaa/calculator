@@ -3,7 +3,7 @@ using Stack = assignment_calc.Stack;
 
 Console.Write("> ");
 var variable = Console.ReadLine();
-char[] operators = new char[] { '+', '-', '/', '*' };
+char[] operators = new char[] { '+', '-', '/', '*', '^', '(', ')' };
 
 Dictionary<string, int> dict = new Dictionary<string, int>();
 dict.Add("+", 2);
@@ -22,7 +22,7 @@ assos.Add("^", "right");
 List<string> operations = new List<string>(); // list of strings (operators)
 
 var buff = ""; // creating empty buffer
-char? oper = null; // for storing the operator
+char? oper; // for storing the operator
 
 foreach (var ch in variable)
 {
@@ -53,7 +53,7 @@ var stack = new Stack();
 var results = new Queue();
 foreach (var operation in operations)
 {
-    if (int.TryParse(operation, out var n))
+    if (int.TryParse(operation, out int n))
     {
         results.Enqueue(operation);
     }
@@ -67,6 +67,7 @@ foreach (var operation in operations)
         {
             results.Enqueue(stack.Pop());
         }
+
         stack.Pop();
     }
     else
@@ -88,6 +89,7 @@ foreach (var operation in operations)
             results.Enqueue(stack.Peek());
             stack.Pop();
         }
+
         stack.Push(operation);
     }
 }
@@ -95,13 +97,72 @@ foreach (var operation in operations)
 
 foreach (var token in stack.GetElements())
 {
-    if (token != null) results.Enqueue(token);
+    if (token != null)
+    {
+        results.Enqueue(token);
+    }
 }
 
 foreach (var operation in results.GetElements())
 {
     if (operation != null)
-    {
+    { 
         Console.WriteLine(operation);
     }
 }
+
+string CalculateResult(Queue postfixTokens)
+{
+    var buffer = new Stack();
+    while (postfixTokens.Count() != 0)
+    {
+        var token = postfixTokens.Dequeue();
+        if (double.TryParse(token, out _))
+        {
+            buffer.Push(token);
+        }
+        else
+        {
+            var secondNumber = buffer.Peek();
+            buffer.Pop();
+            var firstNumber = buffer.Peek();
+            buffer.Pop();
+            var calc = Count(firstNumber, secondNumber, token);
+            buffer.Push(calc);
+        }
+    }
+
+    var result = buffer.Peek();
+    return result;
+}
+
+
+string Count(string firstNum, string secondNum, string oper)
+{
+    double result = 0;
+    switch (oper)
+    {
+        case "+":
+            result = double.Parse(firstNum) + double.Parse(secondNum);
+            break;
+        case "-":
+            result = double.Parse(firstNum) - double.Parse(secondNum);
+            break;
+        case "/":
+            result = double.Parse(firstNum) / double.Parse(secondNum);
+            break;
+        case "*":
+            result = double.Parse(firstNum) * double.Parse(secondNum);
+            break;
+        case "^":
+            result = Math.Pow(double.Parse(firstNum), double.Parse(secondNum));
+            break;
+        default:
+            throw new Exception("Illegal operation");
+    }
+
+    return result.ToString();
+}
+
+string output = String.Format("< {0}", CalculateResult(results));
+Console.WriteLine(output);
