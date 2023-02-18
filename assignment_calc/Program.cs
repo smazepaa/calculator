@@ -4,6 +4,7 @@ using Stack = assignment_calc.Stack;
 Console.Write("> ");
 var variable = Console.ReadLine();
 char[] operators = new char[] { '+', '-', '/', '*', '^', '(', ')' };
+string[] functions = new String[] { "sin", "cos", "tan", "cot", "ln", "lg" };
 
 Dictionary<string, int> dict = new Dictionary<string, int>();
 dict.Add("+", 2);
@@ -22,6 +23,7 @@ assos.Add("^", "right");
 List<string> operations = new List<string>(); // list of strings (operators)
 
 var buff = ""; // creating empty buffer
+var func = "";
 char? oper; // for storing the operator
 
 foreach (var ch in variable)
@@ -40,11 +42,39 @@ foreach (var ch in variable)
             operations.Add(oper.ToString()); //if not - addind a string of that operator
         }
     }
+    
+    else if ((ch.Equals('s') || ch.Equals('i') || ch.Equals('n')) ||
+             (ch.Equals('c') || ch.Equals('o') || ch.Equals('s')) || 
+             (ch.Equals('t') || ch.Equals('a') || ch.Equals('n')) || 
+             (ch.Equals('c') || ch.Equals('o') || ch.Equals('t')))
+    {
+        func += ch;
+        if (func.Length == 3)
+        {
+            operations.Add(func.ToString());
+            func = "";
+        }
+    }
+    
+    else if ((ch.Equals('l') || ch.Equals('g')) || (ch.Equals('l') || ch.Equals('n')))
+    {
+        func += ch;
+        if (func.Length == 2)
+        {
+            operations.Add(func.ToString());
+            func = "";
+        }
+    }
 }
 
 if (buff != "") // if buff contains something
 {
     operations.Add(buff); // add it to the operations
+}
+
+foreach (var operation in operations)
+{
+    // Console.WriteLine(operation);
 }
 
 // shunting yard algorithm
