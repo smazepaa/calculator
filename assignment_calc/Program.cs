@@ -32,6 +32,14 @@ foreach (var ch in variable)
     {
         buff += ch; // if yes - adding it to the buffer
     }
+    
+    else if (ch.Equals('π'))
+    {
+        if (buff != "") operations.Add(buff); 
+        buff = "";
+        buff += ch;
+    }
+    
     else if (operators.Contains(ch)) // checking if it's an operator
     {
         if (buff != "") operations.Add(buff); // adding this operator to the buffer
@@ -88,6 +96,10 @@ foreach (var operation in operations)
         results.Enqueue(operation);
     }
     
+    else if (operation.Equals("π"))
+    {
+        results.Enqueue(Convert.ToString(Math.PI));
+    }
     else if (functions.Contains(operation))
     {
         stack.Push(operation);
