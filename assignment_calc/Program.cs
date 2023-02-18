@@ -87,6 +87,11 @@ foreach (var operation in operations)
     {
         results.Enqueue(operation);
     }
+    
+    else if (functions.Contains(operation))
+    {
+        stack.Push(operation);
+    }
     else if (operation == "(")
     {
         stack.Push(operation);
@@ -99,6 +104,9 @@ foreach (var operation in operations)
         }
 
         stack.Pop();
+
+        if (functions.Contains(stack.Peek())) results.Enqueue(stack.Pop());
+        
     }
     else
     {
