@@ -4,7 +4,7 @@ using Stack = assignment_calc.Stack;
 Console.Write("> ");
 var variable = Console.ReadLine();
 char[] operators = new char[] { '+', '-', '/', '*', '^', '(', ')' };
-string[] functions = new String[] { "sin", "cos", "tan", "cot", "ln", "lg" };
+string[] functions = new String[] { "sin", "cos", "tan", "cot", "log" };
 
 Dictionary<string, int> dict = new Dictionary<string, int>();
 dict.Add("+", 2);
@@ -12,6 +12,11 @@ dict.Add("-", 2);
 dict.Add("*", 3);
 dict.Add("/", 3);
 dict.Add("^", 4);
+dict.Add("sin", 5);
+dict.Add("cos", 5);
+dict.Add("tan", 5);
+dict.Add("cot", 5);
+dict.Add("log", 5);
 
 Dictionary<string, string> assos = new Dictionary<string, string>();
 assos.Add("+", "left");
@@ -19,6 +24,11 @@ assos.Add("-", "left");
 assos.Add("*", "left");
 assos.Add("/", "left");
 assos.Add("^", "right");
+assos.Add("sin", "left");
+assos.Add("cos", "left");
+assos.Add("tan", "left");
+assos.Add("cot", "left");
+assos.Add("log", "left");
 
 List<string> operations = new List<string>(); // list of strings (operators)
 
@@ -54,20 +64,11 @@ foreach (var ch in variable)
     else if ((ch.Equals('s') || ch.Equals('i') || ch.Equals('n')) ||
              (ch.Equals('c') || ch.Equals('o') || ch.Equals('s')) || 
              (ch.Equals('t') || ch.Equals('a') || ch.Equals('n')) || 
-             (ch.Equals('c') || ch.Equals('o') || ch.Equals('t')))
+             (ch.Equals('c') || ch.Equals('o') || ch.Equals('t')) ||
+             (ch.Equals('l') || ch.Equals('o') || ch.Equals('g')))
     {
         func += ch;
         if (func.Length == 3)
-        {
-            operations.Add(func.ToString());
-            func = "";
-        }
-    }
-    
-    else if ((ch.Equals('l') || ch.Equals('g')) || (ch.Equals('l') || ch.Equals('n')))
-    {
-        func += ch;
-        if (func.Length == 2)
         {
             operations.Add(func.ToString());
             func = "";
@@ -207,8 +208,24 @@ string Count(string firstNum, string secondNum, string oper)
         case "^":
             result = Math.Pow(double.Parse(firstNum), double.Parse(secondNum));
             break;
+        case "sin":
+            result = Math.Sin(double.Parse(secondNum));
+            break;
+        case "cos":
+            result = Math.Cos(double.Parse(secondNum));
+            break;
+        case "tan":
+            result = Math.Tan(double.Parse(secondNum));
+            break;
+        case "cot":
+            result = 1 / Math.Tan(double.Parse(secondNum));
+            break;
+        case "log":
+            result = Math.Log10(double.Parse(secondNum));
+            break;
         default:
-            throw new Exception("Illegal operation");
+        throw new Exception("Illegal operation");
+        
     }
 
     return result.ToString();

@@ -40,7 +40,7 @@ public class Stack
         }
         else
         {
-            Console.WriteLine("Stack is empty");
+            //Console.WriteLine("Stack is empty");
             return null;
         }
     }
@@ -49,7 +49,7 @@ public class Stack
     {
         if (_pointer == 0)
         {
-            Console.WriteLine("Stack is empty");
+            //Console.WriteLine("Stack is empty");
         }
 
         if (_pointer != 0)
