@@ -1,5 +1,7 @@
-﻿using assignment_calc;
+﻿using System.Collections;
 using Stack = assignment_calc.Stack;
+using List = assignment_calc.List;
+using Queue = assignment_calc.Queue;
 
 Console.Write("> ");
 var variable = Console.ReadLine();
@@ -30,7 +32,7 @@ assos.Add("tan", "left");
 assos.Add("cot", "left");
 assos.Add("log", "left");
 
-List<string> operations = new List<string>(); // list of strings (operators)
+var operations = new List(); // list of strings (operators)
 
 var buff = ""; // creating empty buffer
 var func = "";
@@ -81,16 +83,14 @@ if (buff != "") // if buff contains something
     operations.Add(buff); // add it to the operations
 }
 
-foreach (var operation in operations)
-{
-    // Console.WriteLine(operation);
-}
-
 // shunting yard algorithm
 
 var stack = new Stack();
 var results = new Queue();
-foreach (var operation in operations)
+
+var ops = operations.GetArray();
+
+foreach (var operation in ops)
 {
     if (int.TryParse(operation, out int n))
     {
